@@ -18,7 +18,7 @@ end
 sharedicons   = shared .. "/icons"
 sharedthemes  = shared .. "/themes"
 themes        = config .. "/themes"
-themename     = "/niceandclean"
+themename     = "/niceandclean-hyoshida"
 if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
   themes = sharedthemes
 end
@@ -44,23 +44,22 @@ else
 end
 --}}}
 
-theme.font          = "sans 8"
+theme.font          = "sans 10"
 
 theme.bg_normal     = "#222222"
-theme.bg_focus      = "#d8d8d8"
+theme.bg_focus      = "#444444"
 theme.bg_urgent     = "#d02e54"
 theme.bg_minimize   = "#444444"
 
 theme.fg_normal     = "#cccccc"
-theme.fg_focus      = "#000000"
+theme.fg_focus      = "#ffffff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
-theme.border_width  = "2"
-theme.border_normal = "#747474"
---theme.border_focus  = "#535d6c"
+theme.border_width  = "1"
+theme.border_normal = "#222222"
 theme.border_marked = "#91231c"
-theme.border_focus  = "#ce2c51"
+theme.border_focus  = "#535d6c"
 
 -- There are other variable sets
 -- overriding the default one when
