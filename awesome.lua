@@ -41,7 +41,7 @@ end
 beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -83,7 +83,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[3])
 end
 -- }}}
 
@@ -110,7 +110,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- {{{ Wibox
 -- Create a textclock widget
-mytextclock = awful.widget.textclock()
+os.setlocale("ja_JP.UTF-8")
+mytextclock = awful.widget.textclock(" %Y-%m-%d(%a) %H:%M:%S ", 1)
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -336,6 +337,7 @@ end
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 2, function (c) c:kill() end),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 -- Set keys
@@ -348,6 +350,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     floating = true,
                      focus = awful.client.focus.filter,
                      keys = clientkeys,
                      buttons = clientbuttons } },
@@ -360,6 +363,12 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+    { rule = { class = "terminal" },
+      properties = { floating = false } },
+    { rule = { instance = "opera" },
+      properties = { border_width = 0,
+                     maximized_horizontal = true,
+                     maximized_vertical = true } },
 }
 -- }}}
 
