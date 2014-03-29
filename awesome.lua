@@ -235,7 +235,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "e", revelation),
 
     -- Screenshot
-    awful.key({                   }, "Print", function () awful.util.spawn(awful.util.getdir("config").."/bin/capscr") end),
+    awful.key({ modkey            }, "Print", function () awful.util.spawn(awful.util.getdir("config").."/bin/capscr") end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
